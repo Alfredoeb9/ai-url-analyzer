@@ -24,7 +24,7 @@ engine = create_engine(dbUrl, connect_args={'check_same_thread': False}, echo=Tr
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 
-@app.route('/api/home', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home():
     session = Session(engine)
 
