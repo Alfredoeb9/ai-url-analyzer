@@ -1,26 +1,26 @@
 import os
 from flask import Flask, jsonify
-from flask_cors import CORS
-from dotenv import load_dotenv
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
-from sqlalchemy import select
-from models.models import Item
+# from flask_cors import CORS
+# from dotenv import load_dotenv
+# from sqlalchemy import create_engine
+# from sqlalchemy.orm import Session
+# from sqlalchemy import select
+# from models.models import Item
 
-load_dotenv()
+# load_dotenv()
 
 # Create a Flask app
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 
 # Get environment variables
-TURSO_DATABASE_URL = os.environ.get("TURSO_DATABASE_URL")
-TURSO_AUTH_TOKEN = os.environ.get("TURSO_AUTH_TOKEN")
+# TURSO_DATABASE_URL = os.environ.get("TURSO_DATABASE_URL")
+# TURSO_AUTH_TOKEN = os.environ.get("TURSO_AUTH_TOKEN")
 
 # construct special SQLAlchemy URL
-dbUrl = f"sqlite+{TURSO_DATABASE_URL}/?authToken={TURSO_AUTH_TOKEN}&secure=true"
+# dbUrl = f"sqlite+{TURSO_DATABASE_URL}/?authToken={TURSO_AUTH_TOKEN}&secure=true"
 
-engine = create_engine(dbUrl, connect_args={'check_same_thread': False}, echo=True)
+# engine = create_engine(dbUrl, connect_args={'check_same_thread': False}, echo=True)
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 
