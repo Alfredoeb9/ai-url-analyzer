@@ -26,12 +26,12 @@ engine = create_engine(dbUrl, connect_args={'check_same_thread': False}, echo=Tr
 
 @app.route('/', methods=['GET'])
 def home():
-    session = Session(engine)
+    # session = Session(engine)
 
     # get & print items
-    stmt = select(Item)
+    # stmt = select(Item)
 
-    json_items = list(map(lambda item: item.to_json(), session.scalars(stmt)))
+    # json_items = list(map(lambda item: item.to_json(), session.scalars(stmt)))
     return jsonify("hello")
 
     # for item in session.scalars(stmt):
