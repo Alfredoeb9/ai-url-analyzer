@@ -2,9 +2,9 @@ import os
 from flask import Flask, jsonify
 # from flask_cors import CORS
 from dotenv import load_dotenv
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import Session
-# from sqlalchemy import select
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+from sqlalchemy import select
 # from models.models import Item
 
 # load_dotenv()
