@@ -4,5 +4,10 @@
       "includeFiles": "models.py"
     }
   },
-  "routes": [{ "src": "/api/(.*)", "dest": "api/index.py" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index"
+    }
+  ]
 }
