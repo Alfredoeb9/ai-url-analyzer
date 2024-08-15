@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from models import Item
+from api.models import Item
 
 # load_dotenv()
 
