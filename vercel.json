@@ -4,5 +4,5 @@
       "includeFiles": "models/**"
     }
   },
-  "routes": [{ "src": "/", "dest": "api/index.py" }]
+  "routes": [{ "src": "/api/(.*)", "dest": "api/index.py" }]
 }
