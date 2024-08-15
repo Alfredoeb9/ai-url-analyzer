@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/index.py": {
-      "includeFiles": ["models/**"]
+      "includeFiles": "models/**"
     }
   },
   "routes": [{ "src": "/", "dest": "api/index.py" }]
