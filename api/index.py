@@ -11,7 +11,7 @@ from api.models.models import Item
 
 # Create a Flask app
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
 # Get environment variables
 TURSO_DATABASE_URL = os.environ.get("TURSO_DATABASE_URL")
