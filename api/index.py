@@ -1,6 +1,6 @@
 import os
 from flask import Flask, jsonify
-# from flask_cors import CORS
+from flask_cors import CORS
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
