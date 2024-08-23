@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from api.models.models import Item
+from models.models import Item
 
 # load_dotenv()
 
@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 
-@app.route('/', methods=['GET'])
+@app.route('/api/home', methods=['GET'])
 def home():
     # session = Session(engine)
 
