@@ -9,7 +9,7 @@ from api.models.models import Item
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 
-load_dotenv()
+# load_dotenv()
 
 # Create a Flask app
 app = Flask(__name__)
