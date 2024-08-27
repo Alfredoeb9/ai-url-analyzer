@@ -3,6 +3,8 @@ flask-sqlalchemy==3.1.1
 flask-cors>=3.0
 greenlet==3.0.3
 python-dotenv==1.0.0
+langchain-core==0.2.
+langchain_ollama==0.1.1
 SQLAlchemy==2.0.32
 sqlalchemy-libsql==0.1.0
 typing-extensions==4.12.2
