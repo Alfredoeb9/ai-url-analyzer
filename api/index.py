@@ -1,13 +1,15 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 from api.models.models import Item
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama.llms import OllamaLLM
 
-# load_dotenv()
+load_dotenv()
 
 # Create a Flask app
 app = Flask(__name__)
@@ -22,21 +24,31 @@ dbUrl = f"sqlite+{TURSO_DATABASE_URL}/?authToken={TURSO_AUTH_TOKEN}&secure=true"
 
 engine = create_engine(dbUrl, connect_args={'check_same_thread': False}, echo=True)
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
+template = """Question: {question}
 
-@app.route('/api/home', methods=['GET'])
+Answer: You are a comedian, scan the url given in the question and make fun of the contents inside in less than 200 words."""
+
+prompt = ChatPromptTemplate.from_template(template)
+
+model = OllamaLLM(model="llava-llama3:8b")
+
+chain = prompt | model
+
+@app.route('/api/home', methods=['GET', 'POST'])
 def home():
-    session = Session(engine)
+    data = request.json
+    param1 = data.get('param1')
+    # session = Session(engine)
 
     # get & print items
-    stmt = select(Item)
+    # stmt = select(Item)
+    # json_items = list(map(lambda item: item.to_json(), session.scalars(stmt)))
 
-    json_items = list(map(lambda item: item.to_json(), session.scalars(stmt)))
-    return jsonify(json_items)
+    print("Ollama is thinking give us a couple minutes")
+    answer = chain.invoke({"question": param1})
+    
+    return jsonify(answer)
 
-    # for item in session.scalars(stmt):
-    #     print(item)
-    #     return jsonify(item)
 
 @app.route('/about')
 def about():
