@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from api.models.models import Item
+from models.models import Item
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 
@@ -24,18 +24,20 @@ dbUrl = f"sqlite+{TURSO_DATABASE_URL}/?authToken={TURSO_AUTH_TOKEN}&secure=true"
 
 engine = create_engine(dbUrl, connect_args={'check_same_thread': False}, echo=True)
 
-template = """Question: {question}
 
-Answer: You are a comedian, scan the url given in the question and make fun of the contents inside in less than 200 words."""
-
-prompt = ChatPromptTemplate.from_template(template)
-
-model = OllamaLLM(model="llava-llama3:8b")
-
-chain = prompt | model
 
 @app.route('/api/home', methods=['GET', 'POST'])
 def home():
+    template = """Question: {question}
+
+    Answer: You are a comedian, scan the url given in the question and make fun of the contents inside in less than 200 words."""
+
+    prompt = ChatPromptTemplate.from_template(template)
+
+    model = OllamaLLM(model="llava-llama3:8b")
+
+    chain = prompt | model
+
     data = request.json
     param1 = data.get('param1')
     # session = Session(engine)
